@@ -133,8 +133,7 @@ The generated PDF report includes:
 * Category sales comparison
 * Top performing products
 
-![Report Preview](charts/monthly_sales.png)
----
+![Monthly Sales Chart](charts/monthly_sales.png)
 
 ## Purpose
 
