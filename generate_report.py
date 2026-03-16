@@ -1,6 +1,12 @@
-from fpdf import FPDF  # FPDF class import
-import main
 from datetime import datetime
+from pathlib import Path
+from fpdf import FPDF, XPos, YPos
+import main
+
+
+OUTPUT_DIR = Path("output")
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
 
 # Access dataframe from main.py
 df = main.df
@@ -8,13 +14,13 @@ df = main.df
 
 # Calculate summary metrics
 total_sales = df["Sales"].sum()
-total_orders = df.shape[0]  #returns no. of rows in a dataframe | df[Row ID].count()-likish ; if there are no null values . BUT, shape[0] returns total rows
+total_orders = df.shape[0]
 avg_sales = df["Sales"].mean()
 max_sale = df["Sales"].max()
 
 
-pdf = FPDF()      #creating a pdf object; creates an empty PDF documexnt. 
-pdf.set_auto_page_break(auto=True, margin=15)       #If content reaches bottom → create new page automatically
+pdf = FPDF(format="A4")  # creating a pdf object; creates an empty PDF document.
+pdf.set_auto_page_break(auto=True, margin=15)  # If content reaches bottom → create new page automatically
 
 
 pdf.add_page()   #must add a page at first
@@ -22,40 +28,73 @@ pdf.add_page()   #must add a page at first
 
 
 # Title
-pdf.set_font("Arial", "B", 22)    #first set then .cell
-pdf.cell(0, 12, "Sales Analysis Report", ln=True, align="C")
-# width, height, /content/next_line = True
-# width = 0 means use full page width, align aligns the text at "C" = center
-
-
+pdf.set_font("Helvetica", "B", 22)  # Helvetica is a core font that works in all PDF viewers
+pdf.cell(
+    0,
+    12,
+    "Sales Analysis Report",
+    new_x=XPos.LMARGIN,
+    new_y=YPos.NEXT,
+    align="C",
+)
 
 # Timestamp
-pdf.set_font("Arial", size=12)
+pdf.set_font("Helvetica", size=12)
 pdf.cell(
     0,
     10,
     f"Report generated on: {datetime.now().strftime('%Y-%m-%d %H:%M')}",
-    ln=True,
+    new_x=XPos.LMARGIN,
+    new_y=YPos.NEXT,
     align="C",
 )
 
-pdf.ln(10)   #adding extra space
+pdf.ln(10)  # adding extra space
 
 
 
 
 # -------- SUMMARY SECTION --------
 
+pdf.set_font("Helvetica", "B", 16)
+pdf.cell(
+    0,
+    10,
+    "Summary Metrics",
+    new_x=XPos.LMARGIN,
+    new_y=YPos.NEXT,
+)
 
-pdf.set_font("Arial", "B", 16)
-pdf.cell(0, 10, "Summary Metrics", ln=True)
+pdf.set_font("Helvetica", size=12)
 
-pdf.set_font("Arial", size=12)
-
-pdf.cell(0, 8, f"Total Orders: {total_orders}", ln=True)
-pdf.cell(0, 8, f"Total Sales: ${total_sales:,.2f}", ln=True)
-pdf.cell(0, 8, f"Average Sale: ${avg_sales:,.2f}", ln=True)
-pdf.cell(0, 8, f"Highest Sale: ${max_sale:,.2f}", ln=True)
+pdf.cell(
+    0,
+    8,
+    f"Total Orders: {total_orders}",
+    new_x=XPos.LMARGIN,
+    new_y=YPos.NEXT,
+)
+pdf.cell(
+    0,
+    8,
+    f"Total Sales: ${total_sales:,.2f}",
+    new_x=XPos.LMARGIN,
+    new_y=YPos.NEXT,
+)
+pdf.cell(
+    0,
+    8,
+    f"Average Sale: ${avg_sales:,.2f}",
+    new_x=XPos.LMARGIN,
+    new_y=YPos.NEXT,
+)
+pdf.cell(
+    0,
+    8,
+    f"Highest Sale: ${max_sale:,.2f}",
+    new_x=XPos.LMARGIN,
+    new_y=YPos.NEXT,
+)
 
 pdf.ln(10)
 
@@ -63,14 +102,16 @@ pdf.ln(10)
 
 # -------- MONTHLY SALES CHART --------
 
-
-pdf.set_font("Arial", "B", 16)
-pdf.cell(0, 10, "Monthly Sales Trend", ln=True)
+pdf.set_font("Helvetica", "B", 16)
+pdf.cell(
+    0,
+    10,
+    "Monthly Sales Trend",
+    new_x=XPos.LMARGIN,
+    new_y=YPos.NEXT,
+)
 
 pdf.image("charts/monthly_sales.png", x=10, w=180)
-# image location, horizontal, vertical position, and w = width
-# x and y are auto adjusted and there is height; h parameter also auto calculates, mostly width is only necessary
-#x= 10 means 10mm from left ( horizontal position)
 
 pdf.ln(110)
 
@@ -80,8 +121,14 @@ pdf.ln(110)
 
 pdf.add_page()
 
-pdf.set_font("Arial", "B", 16)
-pdf.cell(0, 10, "Top 10 Selling Products", ln=True)
+pdf.set_font("Helvetica", "B", 16)
+pdf.cell(
+    0,
+    10,
+    "Top 10 Selling Products",
+    new_x=XPos.LMARGIN,
+    new_y=YPos.NEXT,
+)
 
 pdf.image("charts/top_10_products.png", x=10, w=180)
 
@@ -93,8 +140,14 @@ pdf.ln(110)
 
 pdf.add_page()
 
-pdf.set_font("Arial", "B", 16)
-pdf.cell(0, 10, "Sales by Category", ln=True)
+pdf.set_font("Helvetica", "B", 16)
+pdf.cell(
+    0,
+    10,
+    "Sales by Category",
+    new_x=XPos.LMARGIN,
+    new_y=YPos.NEXT,
+)
 
 pdf.image("charts/sales_by_category.png", x=10, w=180)
 
@@ -106,8 +159,15 @@ pdf.ln(110)
 
 pdf.add_page()
 
-pdf.set_font("Arial", "B", 16)
-pdf.cell(0, 10, "Sales by Region", ln=True)
+pdf.set_font("Helvetica", "B", 16)
+pdf.cell(
+    0,
+    10,
+    "Sales by Region",
+    new_x=XPos.LMARGIN,
+    new_y=YPos.NEXT,
+)
+pdf.ln(10)
 
 pdf.image("charts/sales_by_region.png", x=10, w=180)
 
@@ -116,6 +176,6 @@ pdf.ln(110)
 
 
 # -------- SAVE REPORT --------
-pdf.output("output/sales_report.pdf")
+pdf.output(OUTPUT_DIR / "sales_report.pdf")
 
 print("Report generated successfully!")
