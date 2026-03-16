@@ -42,7 +42,7 @@ monthly_sales.index = monthly_sales.index.to_timestamp()  #converting into actua
 # Periods are like saying "January 2015" (a range). Timestamps are like saying
 # "January 1st, 2015 at midnight" (an exact point). Matplotlib needs exact points to draw grids correctly.
 
-plt.figure(figsize=(20, 10))          # ✅ BEFORE plotting
+plt.figure(figsize=(20, 10))          #  BEFORE plotting
 plt.title("Monthly Sales Trend", fontsize=30,fontstyle="normal",fontweight= "bold",color = "red")
 plt.xlabel("Month", fontsize=20,fontstyle="normal",fontweight= "bold")
 plt.ylabel("Total Sales", fontsize=20,fontstyle="normal",fontweight= "bold")
@@ -96,7 +96,7 @@ plt.savefig("charts/monthly_sales.png")  # save first, otherwise image gets clea
 top_products =  df.groupby("Product Name")["Sales"].sum().sort_values(ascending=False)
 top_10_products = top_products.head(10)
 
-plt.figure(figsize=(22, 12))           # ✅ New figure for second chart
+plt.figure(figsize=(22, 12))           # New figure for second chart
 
 top_10_products.plot(kind="barh",color="#4cbb17") # pandas is overwriting labels
 
@@ -109,7 +109,7 @@ plt.tick_params(axis="both", labelsize=12,colors="purple")
 
 plt.grid(True,axis="x",color="grey")
 plt.tight_layout()
-plt.savefig("charts/top_10_products.png")  # ✅ BEFORE show()
+plt.savefig("charts/top_10_products.png")  # BEFORE show()
 # plt.show()
 
 
