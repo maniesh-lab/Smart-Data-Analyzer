@@ -21,7 +21,6 @@ pdf.add_page()   #must add a page at first
 
 
 
-
 # Title
 pdf.set_font("Arial", "B", 22)    #first set then .cell
 pdf.cell(0, 12, "Sales Analysis Report", ln=True, align="C")
@@ -47,6 +46,7 @@ pdf.ln(10)   #adding extra space
 
 # -------- SUMMARY SECTION --------
 
+
 pdf.set_font("Arial", "B", 16)
 pdf.cell(0, 10, "Summary Metrics", ln=True)
 
@@ -58,7 +58,6 @@ pdf.cell(0, 8, f"Average Sale: ${avg_sales:,.2f}", ln=True)
 pdf.cell(0, 8, f"Highest Sale: ${max_sale:,.2f}", ln=True)
 
 pdf.ln(10)
-
 
 
 
@@ -77,7 +76,6 @@ pdf.ln(110)
 
 
 
-
 # ---------------- PAGE 2 ----------------
 
 pdf.add_page()
@@ -88,8 +86,6 @@ pdf.cell(0, 10, "Top 10 Selling Products", ln=True)
 pdf.image("charts/top_10_products.png", x=10, w=180)
 
 pdf.ln(110)
-
-
 
 
 
@@ -106,7 +102,6 @@ pdf.ln(110)
 
 
 
-
 # ---------------- PAGE 4 ----------------
 
 pdf.add_page()
@@ -117,7 +112,6 @@ pdf.cell(0, 10, "Sales by Region", ln=True)
 pdf.image("charts/sales_by_region.png", x=10, w=180)
 
 pdf.ln(110)
-
 
 
 
