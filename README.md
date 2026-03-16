@@ -85,7 +85,7 @@ The charts are automatically saved in the **charts/** folder.
 
 ### 3. Report Generation
 
-`report_generate.py` creates a **multi-page PDF report** using **FPDF**.
+`generate_report.py` creates a **multi-page PDF report** using **FPDF**.
 
 The report includes:
 
@@ -101,7 +101,7 @@ The report includes:
 ### Install dependencies
 
 ```
-pip install pandas numpy matplotlib fpdf
+pip install pandas numpy matplotlib fpdf  OR pip install -r requirements.txt
 ```
 
 ### Run analysis
@@ -113,7 +113,7 @@ python main.py
 ### Generate report
 
 ```
-python report_generate.py
+python generate_report.py
 ```
 
 The final report will be created at:
