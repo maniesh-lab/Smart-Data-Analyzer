@@ -43,10 +43,10 @@ The goal of the project is to demonstrate the ability to:
 Smart Data Analyzer
 │
 ├── charts/              # Generated charts
-│   ├── Monthly Sales.png
-│   ├── Sales By Category.png
-│   ├── Sales By Region.png
-│   └── Top 10 Products.png
+│   ├── monthly_sales.png
+│   ├── sales_by_category.png
+│   ├── sales_by_region.png
+│   └── top_10_products.png
 │
 ├── data/
 │   └── sales_data.csv
@@ -55,7 +55,8 @@ Smart Data Analyzer
 │   └── sales_report.pdf
 │
 ├── main.py              # Data analysis and chart generation
-├── report_generate.py   # PDF report generation
+├── generate_report.py   # PDF report generation
+├── requirements.txt
 └── README.md
 ```
 
