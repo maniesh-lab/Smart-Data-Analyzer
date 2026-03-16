@@ -10,37 +10,37 @@ This project was created as a **learning exercise while developing practical Pyt
 
 The goal of the project is to demonstrate the ability to:
 
-* clean and process real datasets
-* perform basic business-oriented analysis
-* generate visual insights
-* automate report creation with Python
+- Clean and process real datasets
+- Perform basic business-oriented analysis
+- Generate visual insights
+- Automate report creation with Python
 
 ---
 
 ## Features
 
-* Data cleaning (remove duplicates and missing values)
-* Sales trend analysis
-* Automatic chart generation
-* Summary metrics calculation
-* Multi-page PDF report generation
+- Data cleaning (remove duplicates and missing values)
+- Sales trend analysis
+- Automatic chart generation
+- Summary metrics calculation
+- Multi-page PDF report generation
 
 ---
 
 ## Tools & Libraries
 
-* Python
-* pandas
-* numpy
-* matplotlib
-* fpdf
+- Python 3.7+
+- pandas
+- numpy
+- matplotlib
+- fpdf2
 
 ---
 
 ## Project Structure
 
 ```
-Smart Data Analyzer
+Smart-Data-Analyzer/
 │
 ├── charts/              # Generated charts
 │   ├── monthly_sales.png
@@ -68,31 +68,31 @@ Smart Data Analyzer
 
 `main.py` reads the dataset and performs:
 
-* data cleaning
-* date conversion
-* grouping and aggregation
+- Data cleaning
+- Date conversion
+- Grouping and aggregation
 
 ### 2. Visualization
 
 Charts are generated using **matplotlib**:
 
-* Monthly sales trend
-* Sales by category
-* Sales by region
-* Top selling products
+- Monthly sales trend
+- Sales by category
+- Sales by region
+- Top selling products
 
-The charts are automatically saved in the **charts/** folder.
+The charts are automatically saved in the `charts/` folder.
 
 ### 3. Report Generation
 
-`generate_report.py` creates a **multi-page PDF report** using **FPDF**.
+`generate_report.py` creates a **multi-page PDF report** using **FPDF2**.
 
 The report includes:
 
-* report title
-* generation timestamp
-* summary statistics
-* visual charts
+- Report title
+- Generation timestamp
+- Summary statistics
+- Visual charts
 
 ---
 
@@ -100,23 +100,29 @@ The report includes:
 
 ### Install dependencies
 
+```bash
+pip install -r requirements.txt
 ```
-pip install pandas numpy matplotlib fpdf  OR pip install -r requirements.txt
+
+Or install manually:
+
+```bash
+pip install pandas numpy matplotlib fpdf2
 ```
 
 ### Run analysis
 
-```
+```bash
 python main.py
 ```
 
 ### Generate report
 
-```
+```bash
 python generate_report.py
 ```
 
-The final report will be created at:
+The final report will be saved to:
 
 ```
 output/sales_report.pdf
@@ -128,21 +134,25 @@ output/sales_report.pdf
 
 The generated PDF report includes:
 
-* Sales summary metrics
-* Monthly sales trends
-* Regional sales distribution
-* Category sales comparison
-* Top performing products
+- Sales summary metrics
+- Monthly sales trends
+- Regional sales distribution
+- Category sales comparison
+- Top performing products
+
+> **Note:** Charts are generated when you run `main.py`. The `charts/` folder will be populated after the first run.
 
 ![Monthly Sales Chart](charts/monthly_sales.png)
+
+---
 
 ## Purpose
 
 This project was created to practice:
 
-* data analysis with pandas
-* data visualization with matplotlib
-* automated reporting with Python
+- Data analysis with pandas
+- Data visualization with matplotlib
+- Automated reporting with Python
 
 ---
 
