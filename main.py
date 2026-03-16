@@ -83,7 +83,7 @@ plt.xlim(
 plt.tight_layout()
 
 # ensure output folder exists and save chart with a filename  and also name of file too at end
-plt.savefig("charts/Monthly Sales.png")  # save first, otherwise image gets cleared, then show().
+plt.savefig("charts/monthly_sales.png")  # save first, otherwise image gets cleared, then show().
 # plt.show()
 
 
@@ -109,7 +109,7 @@ plt.tick_params(axis="both", labelsize=12,colors="purple")
 
 plt.grid(True,axis="x",color="grey")
 plt.tight_layout()
-plt.savefig("charts/Top 10 Products.png")  # ✅ BEFORE show()
+plt.savefig("charts/top_10_products.png")  # ✅ BEFORE show()
 # plt.show()
 
 
@@ -136,7 +136,7 @@ plt.tick_params(axis="both", labelsize=14,colors="purple")
 
 plt.grid(True,axis="x",color="grey")
 plt.tight_layout()
-plt.savefig("charts/Sales By Region")
+plt.savefig("charts/sales_by_region")
 # plt.show()
 
 
@@ -162,7 +162,7 @@ plt.tick_params(axis="both", labelsize=14,colors="purple")
 
 plt.grid(True,axis="x",color="grey")
 plt.tight_layout()
-plt.savefig("charts/Sales By Category")
+plt.savefig("charts/sales_by_category")
 # plt.show()
 
 

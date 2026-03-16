@@ -1,8 +1,8 @@
-# Smart Data Analyzer
+# Smart Sales Data Analyzer
 
 ## Overview
 
-Smart Data Analyzer is a beginner-level Python project built to practice **data analysis, visualization, and automated reporting**.
+Smart Sales Data Analyzer is a beginner-level Python project built to practice **data analysis, visualization, and automated reporting**.
 
 The program processes a raw CSV sales dataset, cleans the data, identifies trends, generates charts, and automatically compiles the results into a structured PDF report.
 
@@ -133,6 +133,7 @@ The generated PDF report includes:
 * Category sales comparison
 * Top performing products
 
+![Report Preview](charts/monthly_sales.png)
 ---
 
 ## Purpose
