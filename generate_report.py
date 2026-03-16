@@ -4,12 +4,13 @@ from fpdf import FPDF, XPos, YPos
 import main
 
 
-OUTPUT_DIR = Path("output")
-OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+OUTPUT_DIR = Path("output")   #Path("output") creates a path object,#and .mkdir(parents=True, exist_ok=True) creates the folder if 
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)  # it doesn't exist, same idea as os.makedirs, just cleaner.
 
 
 # Access dataframe from main.py
 df = main.df
+
 
 
 # Calculate summary metrics
@@ -22,19 +23,19 @@ max_sale = df["Sales"].max()
 pdf = FPDF(format="A4")  # creating a pdf object; creates an empty PDF document.
 pdf.set_auto_page_break(auto=True, margin=15)  # If content reaches bottom → create new page automatically
 
-
 pdf.add_page()   #must add a page at first
 
 
 
 # Title
+
 pdf.set_font("Helvetica", "B", 22)  # Helvetica is a core font that works in all PDF viewers
 pdf.cell(
     0,
     12,
     "Sales Analysis Report",
-    new_x=XPos.LMARGIN,
-    new_y=YPos.NEXT,
+    new_x=XPos.LMARGIN,  #XPos.LMARGIN means "after this cell, move X position back to the left margin.""
+    new_y=YPos.NEXT,     #YPos.NEXT means "move Y position down to the next line."
     align="C",
 )
 
@@ -55,6 +56,7 @@ pdf.ln(10)  # adding extra space
 
 
 # -------- SUMMARY SECTION --------
+
 
 pdf.set_font("Helvetica", "B", 16)
 pdf.cell(
@@ -100,7 +102,9 @@ pdf.ln(10)
 
 
 
+
 # -------- MONTHLY SALES CHART --------
+
 
 pdf.set_font("Helvetica", "B", 16)
 pdf.cell(
@@ -118,6 +122,7 @@ pdf.ln(110)
 
 
 # ---------------- PAGE 2 ----------------
+
 
 pdf.add_page()
 
@@ -138,6 +143,7 @@ pdf.ln(110)
 
 # ---------------- PAGE 3 ----------------
 
+
 pdf.add_page()
 
 pdf.set_font("Helvetica", "B", 16)
@@ -156,6 +162,7 @@ pdf.ln(110)
 
 
 # ---------------- PAGE 4 ----------------
+
 
 pdf.add_page()
 
@@ -176,6 +183,12 @@ pdf.ln(110)
 
 
 # -------- SAVE REPORT --------
+
 pdf.output(OUTPUT_DIR / "sales_report.pdf")
+
+# Instead of hardcoding the string "output/sales_report.pdf", it uses the Path object. 
+# The / here isn't division — it's pathlib's way of joining paths. 
+# It's cleaner and works correctly on Windows, Mac, and Linux
+
 
 print("Report generated successfully!")
