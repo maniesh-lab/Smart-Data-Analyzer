@@ -2,18 +2,16 @@
 
 ## Overview
 
-Smart Sales Data Analyzer is a beginner-level Python project built to practice **data analysis, visualization, and automated reporting**.
+A Python pipeline that turns raw sales data into a professional PDF report — 
+automatically.
 
-The program processes a raw CSV sales dataset, cleans the data, identifies trends, generates charts, and automatically compiles the results into a structured PDF report.
+Point it at any sales CSV and it will:
+- Clean and validate the data
+- Identify trends by month, region, and category
+- Generate 4 charts (monthly trend, category breakdown, regional distribution, top products)
+- Compile everything into a timestamped, multi-page PDF report
 
-This project was created as a **learning exercise while developing practical Python and data analysis skills**, focusing on tools commonly used in real-world workflows such as pandas, matplotlib, and automated reporting.
-
-The goal of the project is to demonstrate the ability to:
-
-- Clean and process real datasets
-- Perform basic business-oriented analysis
-- Generate visual insights
-- Automate report creation with Python
+Built with pandas, matplotlib, and FPDF2. No manual work required after setup.
 
 ---
 
