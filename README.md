@@ -144,16 +144,6 @@ The generated PDF report includes:
 
 ---
 
-## Purpose
-
-This project was created to practice:
-
-- Data analysis with pandas
-- Data visualization with matplotlib
-- Automated reporting with Python
-
----
-
 ## Author
 
 Manish Pandeya
