@@ -52,6 +52,10 @@ Smart-Data-Analyzer/
 ├── output/
 │   └── sales_report.pdf
 │
+├── screenshots/
+│   ├── report_preview_1.png
+│   └── report_preview_2.png
+│
 ├── main.py              # Data analysis and chart generation
 ├── generate_report.py   # PDF report generation
 ├── requirements.txt
