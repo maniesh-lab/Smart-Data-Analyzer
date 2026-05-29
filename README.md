@@ -96,37 +96,20 @@ The report includes:
 
 ---
 
-## How to Run
+## 🚀 How to Run
 
-### Install dependencies
-
+### 1. Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-Or install manually:
-
+### 2. Run the full pipeline
 ```bash
-pip install pandas numpy matplotlib fpdf2
+python main.py && python generate_report.py
 ```
 
-### Run analysis
-
-```bash
-python main.py
-```
-
-### Generate report
-
-```bash
-python generate_report.py
-```
-
-The final report will be saved to:
-
-```
-output/sales_report.pdf
-```
+This runs the analysis and generates the PDF report automatically.
+The final report will be saved to `output/sales_report.pdf`
 
 ---
 
@@ -142,7 +125,9 @@ The generated PDF report includes:
 
 > **Note:** Charts are generated when you run `main.py`. The `charts/` folder will be populated after the first run.
 
-![Monthly Sales Chart](charts/monthly_sales.png)
+![Report Preview](screenshots/report_preview_1.png)
+
+![Report Preview](screenshots/report_preview_2.png)
 
 ---
 
