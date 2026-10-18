@@ -5,7 +5,8 @@
 A Python pipeline that turns raw sales data into a professional PDF report — 
 automatically.
 
-Point it at any sales CSV and it will:
+Point it at any sales CSV — telling it which columns hold the date, amount,
+product, region and category — and it will:
 - Clean and validate the data
 - Identify trends by month, region, and category
 - Generate 4 charts (monthly trend, category breakdown, regional distribution, top products)
@@ -17,7 +18,9 @@ Built with pandas, matplotlib, and FPDF2. No manual work required after setup.
 
 ## Features
 
-- Data cleaning (remove duplicates and missing values)
+- Works on your own CSV: column names, date format, input and output paths are all command-line options
+- Data cleaning — removes duplicates and rows missing a value the analysis needs (a blank, unrelated column like Postal Code doesn't throw a sale away)
+- Clear error if a column is missing, listing the columns the file actually has
 - Sales trend analysis
 - Automatic chart generation
 - Summary metrics calculation
@@ -27,9 +30,8 @@ Built with pandas, matplotlib, and FPDF2. No manual work required after setup.
 
 ## Tools & Libraries
 
-- Python 3.7+
+- Python 3.10+
 - pandas
-- numpy
 - matplotlib
 - fpdf2
 
@@ -56,8 +58,8 @@ Smart-Data-Analyzer/
 │   ├── report_preview_1.png
 │   └── report_preview_2.png
 │
-├── main.py              # Data analysis and chart generation
-├── generate_report.py   # PDF report generation
+├── main.py              # entry point: options, cleaning, analysis, charts
+├── generate_report.py   # build_report(): turns summary + charts into the PDF
 ├── requirements.txt
 └── README.md
 ```
@@ -70,8 +72,9 @@ Smart-Data-Analyzer/
 
 `main.py` reads the dataset and performs:
 
-- Data cleaning
-- Date conversion
+- Column check (stops with a helpful message if a column is missing)
+- Data cleaning — duplicates, and rows missing a date, amount, product, region or category
+- Date and amount conversion (unreadable values are dropped, not crashed on)
 - Grouping and aggregation
 
 ### 2. Visualization
@@ -87,7 +90,8 @@ The charts are automatically saved in the `charts/` folder.
 
 ### 3. Report Generation
 
-`generate_report.py` creates a **multi-page PDF report** using **FPDF2**.
+`generate_report.py` creates a **multi-page PDF report** using **FPDF2**;
+`main.py` calls it automatically at the end of the run.
 
 The report includes:
 
@@ -107,11 +111,25 @@ pip install -r requirements.txt
 
 ### 2. Run the full pipeline
 ```bash
-python main.py && python generate_report.py
+python main.py
 ```
 
-This runs the analysis and generates the PDF report automatically.
-The final report will be saved to `output/sales_report.pdf`
+This runs the analysis, saves the charts to `charts/`, and builds the PDF
+report at `output/sales_report.pdf`.
+
+### 3. Use your own CSV
+```bash
+python main.py --input my_sales.csv \
+    --date-col "Date" --sales-col "Revenue" --product-col "Item" \
+    --region-col "Area" --category-col "Type" --order-col "Invoice No"
+```
+
+- Pass `--region-col ""` or `--category-col ""` to skip a chart your data has no column for
+- Pass `--order-col ""` to count rows instead of unique orders
+- Add `--month-first` if your dates are MM/DD/YYYY (the default is DD/MM/YYYY)
+- `--charts-dir` and `--output` change where the charts and PDF are saved
+
+Run `python main.py --help` for the full list.
 
 ---
 
