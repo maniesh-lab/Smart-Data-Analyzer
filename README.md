@@ -145,7 +145,7 @@ The generated PDF report includes:
 - Category sales comparison
 - Top performing products
 
-> **Note:** Charts are generated when you run `main.py`. The `charts/` folder will be populated after the first run.
+> **Note:** The 4 charts in `charts/` and `output/sales_report.pdf` are sample outputs from the included dataset. Running `main.py` replaces them with your own.
 
 ![Report Preview](screenshots/report_preview_1.png)
 
