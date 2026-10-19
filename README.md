@@ -104,7 +104,7 @@ The report includes:
 
 ---
 
-## 🚀 How to Run
+## How to Run
 
 ### 1. Install dependencies
 ```bash
