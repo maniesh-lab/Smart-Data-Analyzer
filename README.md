@@ -60,6 +60,8 @@ Smart-Data-Analyzer/
 │
 ├── main.py              # entry point: options, cleaning, analysis, charts
 ├── generate_report.py   # build_report(): turns summary + charts into the PDF
+├── .gitignore
+├── LICENSE
 ├── requirements.txt
 └── README.md
 ```
