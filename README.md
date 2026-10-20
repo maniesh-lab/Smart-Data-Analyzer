@@ -1,18 +1,13 @@
 # Smart Sales Data Analyzer
 
-## Overview
+A Python pipeline that turns any sales CSV into 4 charts and a multi-page PDF
+report. You tell it which columns hold the date, amount, product, region and
+category, so it isn't tied to one dataset.
 
-A Python pipeline that turns raw sales data into a professional PDF report — 
-automatically.
-
-Point it at any sales CSV — telling it which columns hold the date, amount,
-product, region and category — and it will:
-- Clean and validate the data
-- Identify trends by month, region, and category
-- Generate 4 charts (monthly trend, category breakdown, regional distribution, top products)
-- Compile everything into a timestamped, multi-page PDF report
-
-Built with pandas, matplotlib, and FPDF2. No manual work required after setup.
+It cleans the data first (duplicates, blank values and unreadable dates or
+amounts are dropped, and it tells you how many), then charts sales by month,
+product, category and region, and puts the charts and summary numbers into a
+PDF with the date and time it was made.
 
 ---
 
@@ -21,6 +16,7 @@ Built with pandas, matplotlib, and FPDF2. No manual work required after setup.
 - Works on your own CSV: column names, date format, input and output paths are all command-line options
 - Data cleaning — removes duplicates and rows missing a value the analysis needs (a blank, unrelated column like Postal Code doesn't throw a sale away)
 - Clear error if a column is missing, listing the columns the file actually has
+- Prints how many rows were read and how many were kept after cleaning
 - Sales trend analysis
 - Automatic chart generation
 - Summary metrics calculation
@@ -28,12 +24,14 @@ Built with pandas, matplotlib, and FPDF2. No manual work required after setup.
 
 ---
 
-## Tools & Libraries
+## Tech Stack
 
-- Python 3.10+
-- pandas
-- matplotlib
-- fpdf2
+| Tool | Purpose |
+|---|---|
+| Python 3.10+ | Language |
+| `pandas` | Reading, cleaning and grouping the CSV |
+| `matplotlib` | Drawing the 4 charts |
+| `fpdf2` | Building the PDF report |
 
 ---
 
@@ -153,6 +151,15 @@ The generated PDF report includes:
 
 ---
 
+## Known Limitations
+
+- Money is always shown with a `$` sign
+- Dates must be day-first (DD/MM/YYYY) or, with `--month-first`, month-first. A file that mixes both will have some dates read the wrong way round
+- The chart and report file names are fixed, so each run replaces the last one
+
+---
+
 ## Author
 
-Manish Pandeya
+**Manish Pandeya** · [github.com/maniesh-lab](https://github.com/maniesh-lab)
+
