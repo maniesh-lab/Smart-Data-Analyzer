@@ -24,17 +24,6 @@ PDF with the date and time it was made.
 
 ---
 
-## Tech Stack
-
-| Tool | Purpose |
-|---|---|
-| Python 3.10+ | Language |
-| `pandas` | Reading, cleaning and grouping the CSV |
-| `matplotlib` | Drawing the 4 charts |
-| `fpdf2` | Building the PDF report |
-
----
-
 ## Project Structure
 
 ```
@@ -151,6 +140,17 @@ The generated PDF report includes:
 
 ---
 
+## Tech Stack
+
+| Tool | Purpose |
+|---|---|
+| Python 3.10+ | Language |
+| `pandas` | Reading, cleaning and grouping the CSV |
+| `matplotlib` | Drawing the 4 charts |
+| `fpdf2` | Building the PDF report |
+
+---
+
 ## Known Limitations
 
 - Money is always shown with a `$` sign
@@ -162,4 +162,3 @@ The generated PDF report includes:
 ## Author
 
 **Manish Pandeya** · [github.com/maniesh-lab](https://github.com/maniesh-lab)
-
