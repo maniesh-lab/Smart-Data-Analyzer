@@ -44,6 +44,7 @@ def parse_args():
 def load_data(path, date_col, sales_col, needed_cols, dayfirst=True):
     """Read the CSV and clean only what the analysis needs."""
     df = pd.read_csv(path)
+    rows_read = len(df)
 
     missing = [col for col in needed_cols if col not in df.columns]
     if missing:
@@ -69,6 +70,9 @@ def load_data(path, date_col, sales_col, needed_cols, dayfirst=True):
 
     if df.empty:
         raise SystemExit("No usable rows left after cleaning — check the column names and date format.")
+
+    dropped = rows_read - len(df)
+    print(f"Read {rows_read:,} rows, kept {len(df):,} ({dropped:,} dropped as duplicates, blank or unreadable)")
     return df
 
 
